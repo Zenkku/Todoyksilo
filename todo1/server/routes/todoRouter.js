@@ -1,20 +1,21 @@
 import{pool}from'../helper/db.js'
 import{Router}from'express'
 import {auth}from '../helper/auth.js' 
+import { getTasks } from '../Controllers/TaskController.js'
+
 
 const router = Router()
 const port = process.env.PORT
 
-router.get('/', (req, res, next) => {
 
+router.get("/",getTasks)
+
+/*router.get('/', (req, res, next) => {
  pool.query('SELECT * FROM task', (err, result) => {
     if (err) {
  return next (err)
- }
- res.status(200).json(result.rows||[])
- })
-})
-
+} res.status(200).json(result.rows||[])
+ }) })*/
 
 
 router.post('/create',auth,(req, res, next) => {
